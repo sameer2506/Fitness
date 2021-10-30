@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_home"
+    app:startDestination="@id/newPlayingMovieListFragment">
+
+    <fragment
+        android:id="@+id/newPlayingMovieListFragment"
+        android:name="com.example.brewapps.nowPlaying.NowPlayingMovieListFragment"
+        tools:layout="@layout/fragment_now_playing_movie_list"/>
+
+</navigation>

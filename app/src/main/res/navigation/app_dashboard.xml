@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_dashboard"
+    app:startDestination="@id/topRatedMovieListFragment">
+
+    <fragment
+        android:id="@+id/topRatedMovieListFragment"
+        android:name="com.example.brewapps.topRated.TopRatedMovieListFragment"
+        tools:layout="@layout/fragment_top_rated_movie_list"/>
+
+</navigation>

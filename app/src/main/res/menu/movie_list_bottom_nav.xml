@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/app_home"
+        android:icon="@drawable/video"
+        android:title="Now Playing"/>
+
+    <item
+        android:id="@+id/app_dashboard"
+        android:icon="@drawable/star"
+        android:title="Top Rated"/>
+
+</menu>
