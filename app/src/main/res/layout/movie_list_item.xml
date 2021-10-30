@@ -11,6 +11,7 @@
         <variable
             name="movieListItemClick"
             type="com.example.brewapps.ui.MovieListItem.OnItemClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/shop" />
+                        android:src="@{movie.poster_path}"/>
 
                 </androidx.cardview.widget.CardView>
 
