@@ -3,6 +3,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://dl.bintray.com/kodein-framework/Kodein-DI/' }
+
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
