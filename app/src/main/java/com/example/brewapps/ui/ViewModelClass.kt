@@ -1,4 +1,4 @@
-package com.example.brewapps.ui.nowPlaying
+package com.example.brewapps.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

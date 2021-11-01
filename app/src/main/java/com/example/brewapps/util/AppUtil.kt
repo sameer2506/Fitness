@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Toast
 import com.example.brewapps.data.network.Resource
 import com.google.android.material.snackbar.Snackbar
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 fun log(message: String){
     Log.d("cms_app_test",message)
@@ -83,4 +85,10 @@ fun handleApiError(
             }
         }
     }
+}
+
+fun roundTheNumber(num: Double): String {
+    val df = DecimalFormat("#.###")
+    df.roundingMode = RoundingMode.CEILING
+    return df.format(num)
 }

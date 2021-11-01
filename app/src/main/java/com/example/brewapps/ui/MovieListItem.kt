@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.brewapps.R
 import com.example.brewapps.data.entities.nowPlaying.Result
 import com.example.brewapps.databinding.MovieListItemBinding
+import com.squareup.picasso.Picasso
 
 class MovieListItem(
     val arrayList: List<Result>,
@@ -39,6 +40,7 @@ class MovieListItem(
         {
             binding.movie = list
             binding.movieListItemClick = listener
+            Picasso.get().load("https://image.tmdb.org/t/p/w342${list.poster_path}").into(binding.moviePosterImage)
             binding.executePendingBindings()
         }
 

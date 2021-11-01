@@ -1,14 +1,10 @@
 package com.example.brewapps
 
-import android.annotation.SuppressLint
 import android.app.Application
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.os.Build
 import com.example.brewapps.data.network.Api
 import com.example.brewapps.data.network.NetworkConnectionInterceptor
 import com.example.brewapps.data.repositories.Respository
-import com.example.brewapps.ui.nowPlaying.ViewModelFactory
+import com.example.brewapps.ui.ViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule

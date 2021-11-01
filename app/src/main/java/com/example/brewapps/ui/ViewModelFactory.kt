@@ -1,10 +1,7 @@
-package com.example.brewapps.ui.nowPlaying
+package com.example.brewapps.ui
 
 import androidx.lifecycle.*
-import com.example.brewapps.data.entities.nowPlaying.NowPlayingData
-import com.example.brewapps.data.network.Resource
 import com.example.brewapps.data.repositories.Respository
-import kotlinx.coroutines.launch
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(

@@ -6,18 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewapps.R
-import com.example.brewapps.data.entities.nowPlaying.NowPlayingData
 import com.example.brewapps.data.entities.nowPlaying.Result
 import com.example.brewapps.data.network.Resource
 import com.example.brewapps.databinding.FragmentNowPlayingMovieListBinding
 import com.example.brewapps.ui.MovieListItem
+import com.example.brewapps.ui.ViewModelClass
+import com.example.brewapps.ui.ViewModelFactory
 import com.example.brewapps.util.handleApiError
 import com.example.brewapps.util.log
-import com.example.brewapps.util.toast
+import com.example.brewapps.util.roundTheNumber
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -88,8 +91,15 @@ class NowPlayingMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnIte
     }
 
     override fun onItemClick(list: Result) {
-        log("item clicked")
-        requireContext().toast("item clicked")
+        val popularity = roundTheNumber(list.popularity)
+        val bundle = bundleOf(
+            "poster" to list.poster_path,
+            "movie" to list.title,
+            "release" to list.release_date,
+            "popularity" to popularity,
+            "overview" to list.overview
+        )
+        findNavController().navigate(R.id.action_movie_details, bundle)
     }
 
 }

@@ -8,6 +8,44 @@
     <fragment
         android:id="@+id/topRatedMovieListFragment"
         android:name="com.example.brewapps.ui.topRated.TopRatedMovieListFragment"
-        tools:layout="@layout/fragment_top_rated_movie_list"/>
+        tools:layout="@layout/fragment_top_rated_movie_list" >
+
+        <action
+            android:id="@+id/action_movie_details"
+            app:destination="@+id/movie_details" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_details"
+        android:name="com.example.brewapps.ui.detailMovieList.MovieDetailsFragment"
+        tools:layout="@layout/fragment_movie_details" >
+
+        <argument
+            android:name="poster"
+            app:argType="string"
+            app:nullable="false"/>
+
+        <argument
+            android:name="movie"
+            app:argType="string"
+            app:nullable="false"/>
+
+        <argument
+            android:name="release"
+            app:argType="string"
+            app:nullable="false"/>
+
+        <argument
+            android:name="popularity"
+            app:argType="string"
+            app:nullable="false"/>
+
+        <argument
+            android:name="overview"
+            app:argType="string"
+            app:nullable="false"/>
+
+    </fragment>
 
 </navigation>
