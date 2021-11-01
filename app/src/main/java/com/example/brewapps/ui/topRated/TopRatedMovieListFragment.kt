@@ -88,7 +88,7 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         binding.recyclerViewNowPlaying.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
-            adapter = MovieListItem(list, this@NowPlayingMovieListFragment, context)
+            adapter = MovieListItem(list, this@TopRatedMovieListFragment, context)
         }
     }
 
