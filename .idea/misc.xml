@@ -3,10 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Sameer/StudioProjects/BrewApps/app/src/main/res/layout/movie_list_item.xml" value="0.23425925925925925" />
-        <entry key="..\:/code/BrewApps/app/src/main/res/layout/activity_detail_movie_list.xml" value="0.264" />
-        <entry key="..\:/code/BrewApps/app/src/main/res/layout/fragment_movie_details.xml" value="0.25416666666666665" />
-        <entry key="..\:/code/BrewApps/app/src/main/res/layout/movie_list_item.xml" value="0.24010416666666667" />
+        <entry key="..\:/BrewApps/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/BrewApps/app/src/main/res/layout/fragment_now_playing_movie_list.xml" value="0.264" />
+        <entry key="..\:/BrewApps/app/src/main/res/layout/fragment_top_rated_movie_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/BrewApps/app/src/main/res/layout/movie_list_item.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

@@ -25,7 +25,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:elevation="10dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="10dp"
@@ -36,7 +36,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/color_element_dark">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
@@ -54,7 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@{movie.poster_path}"/>
+                        android:src="@{movie.poster_path}" />
 
                 </androidx.cardview.widget.CardView>
 
