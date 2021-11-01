@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewapps.R
-import com.example.brewapps.data.entities.nowPlaying.Result
+import com.example.brewapps.data.entities.Result
 import com.example.brewapps.data.network.Resource
 import com.example.brewapps.databinding.FragmentTopRatedMovieListBinding
 import com.example.brewapps.ui.MovieListItem
@@ -26,30 +26,31 @@ import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
 
-class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemClickListener  {
+class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemClickListener {
 
     override val kodein by kodein()
 
-    private val factory : ViewModelFactory by instance()
+    private val factory: ViewModelFactory by instance()
 
-    private lateinit var binding : FragmentTopRatedMovieListBinding
+    private lateinit var binding: FragmentTopRatedMovieListBinding
     private lateinit var viewModel: ViewModelClass
 
     private lateinit var ctx: Context
-    private lateinit var layout:View
+    private lateinit var layout: View
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentTopRatedMovieListBinding.inflate(layoutInflater)
         ctx = requireContext()
-        layout = requireActivity().findViewById<FragmentContainerView>(R.id.fragmentContainerViewMovieList)
+        layout =
+            requireActivity().findViewById<FragmentContainerView>(R.id.fragmentContainerViewMovieList)
         viewModel = ViewModelProvider(this, factory).get(ViewModelClass::class.java)
 
-        return  binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,12 +63,12 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         }
     }
 
-    private fun getMovieList(){
+    private fun getMovieList() {
         binding.swipeRefresh.isEnabled = true
 
-        viewModel.getNowPlayingData()
+        viewModel.getTopRatedData()
 
-        viewModel.nowPlayingData.observe(viewLifecycleOwner, {
+        viewModel.topRatedData.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Success -> {
                     bindUI(it.value.results)

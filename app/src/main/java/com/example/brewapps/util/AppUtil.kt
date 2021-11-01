@@ -9,23 +9,23 @@ import com.google.android.material.snackbar.Snackbar
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-fun log(message: String){
-    Log.d("cms_app_test",message)
+fun log(message: String) {
+    Log.d("cms_app_test", message)
 }
 
-fun logError(message: String){
-    Log.e("cms_app_test",message)
+fun logError(message: String) {
+    Log.e("cms_app_test", message)
 }
 
 
-fun Context.toast(message:String){
+fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
 fun View.snackbar(message: String, action: (() -> Unit)? = null) {
     val snackbar = Snackbar.make(this, message, Snackbar.LENGTH_SHORT)
     action?.let {
-        snackbar.setAction("Retry"){
+        snackbar.setAction("Retry") {
             it()
         }
     }
@@ -78,9 +78,9 @@ fun handleApiError(
         }
         else -> {
             logError("error : ${failure.errorLog}")
-            if(failure.errorToast =="Make sure you are connected to internet."){
+            if (failure.errorToast == "Make sure you are connected to internet.") {
                 view.snackbar(failure.errorToast)
-            }else{
+            } else {
                 context.toast(failure.errorToast!!)
             }
         }

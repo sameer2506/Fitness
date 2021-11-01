@@ -1,6 +1,6 @@
-package com.example.brewapps.data.entities.nowPlaying
+package com.example.brewapps.data.entities
 
-data class NowPlayingData(
+data class MoviesList(
     val dates: Dates,
     val page: Int,
     val results: List<Result>,

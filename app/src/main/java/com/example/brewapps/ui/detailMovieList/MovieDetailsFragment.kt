@@ -15,7 +15,7 @@ class MovieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieDetailsBinding
     private lateinit var ctx: Context
-    private lateinit var layout:View
+    private lateinit var layout: View
 
     private var moviePoster: String? = null
     private var movieTitle: String? = null
@@ -30,7 +30,8 @@ class MovieDetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMovieDetailsBinding.inflate(layoutInflater)
         ctx = requireContext()
-        layout = requireActivity().findViewById<FragmentContainerView>(R.id.fragmentContainerViewMovieList)
+        layout =
+            requireActivity().findViewById<FragmentContainerView>(R.id.fragmentContainerViewMovieList)
 
         moviePoster = arguments?.getString("poster")
         movieTitle = arguments?.getString("movie")
@@ -49,7 +50,7 @@ class MovieDetailsFragment : Fragment() {
         binding.releaseDate.text = movieReleaseDate
         binding.popularity.text = moviePopularity
         binding.description.text = movieDescription
-        
+
     }
 
 }

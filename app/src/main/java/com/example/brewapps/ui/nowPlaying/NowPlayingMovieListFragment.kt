@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewapps.R
-import com.example.brewapps.data.entities.nowPlaying.Result
+import com.example.brewapps.data.entities.Result
 import com.example.brewapps.data.network.Resource
 import com.example.brewapps.databinding.FragmentNowPlayingMovieListBinding
 import com.example.brewapps.ui.MovieListItem
@@ -30,23 +30,24 @@ class NowPlayingMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnIte
 
     override val kodein by kodein()
 
-    private val factory : ViewModelFactory by instance()
+    private val factory: ViewModelFactory by instance()
 
-    private lateinit var binding : FragmentNowPlayingMovieListBinding
+    private lateinit var binding: FragmentNowPlayingMovieListBinding
     private lateinit var viewModel: ViewModelClass
 
     private lateinit var ctx: Context
-    private lateinit var layout:View
+    private lateinit var layout: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentNowPlayingMovieListBinding.inflate(layoutInflater)
         ctx = requireContext()
-        layout = requireActivity().findViewById<FragmentContainerView>(R.id.fragmentContainerViewMovieList)
-        viewModel =ViewModelProvider(this, factory).get(ViewModelClass::class.java)
+        layout =
+            requireActivity().findViewById<FragmentContainerView>(R.id.fragmentContainerViewMovieList)
+        viewModel = ViewModelProvider(this, factory).get(ViewModelClass::class.java)
         return binding.root
     }
 
@@ -60,7 +61,7 @@ class NowPlayingMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnIte
         }
     }
 
-    private fun getMovieList(){
+    private fun getMovieList() {
         binding.swipeRefresh.isEnabled = true
 
         viewModel.getNowPlayingData()

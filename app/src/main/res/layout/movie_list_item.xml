@@ -6,7 +6,7 @@
 
         <variable
             name="movie"
-            type="com.example.brewapps.data.entities.nowPlaying.Result" />
+            type="com.example.brewapps.data.entities.Result" />
         
         <variable
             name="movieListItemClick"
@@ -55,7 +55,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@{movie.poster_path}" />
+                        android:src="@{movie.poster_path}"
+                        android:contentDescription="@string/movie_poster" />
 
                 </androidx.cardview.widget.CardView>
 

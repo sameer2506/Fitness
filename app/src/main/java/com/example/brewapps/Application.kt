@@ -3,7 +3,7 @@ package com.example.brewapps
 import android.app.Application
 import com.example.brewapps.data.network.Api
 import com.example.brewapps.data.network.NetworkConnectionInterceptor
-import com.example.brewapps.data.repositories.Respository
+import com.example.brewapps.data.repositories.Repository
 import com.example.brewapps.ui.ViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -23,7 +23,7 @@ class Application : Application(), KodeinAware {
 
         // Repository
 
-        bind() from singleton { Respository(instance()) }
+        bind() from singleton { Repository(instance()) }
 
         // View Model Factory
 

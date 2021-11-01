@@ -2,4 +2,11 @@
     <string name="app_name">BrewApps</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="november_05_2018">November 05, 2018</string>
+    <string name="king_logo">King Logo</string>
+    <string name="_50">50%</string>
+    <string name="duration_logo">Duration logo</string>
+    <string name="_2_hr_49_mins">2 hr 49 mins</string>
 </resources>

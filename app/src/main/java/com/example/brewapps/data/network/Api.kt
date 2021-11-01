@@ -1,6 +1,6 @@
 package com.example.brewapps.data.network
 
-import com.example.brewapps.data.entities.nowPlaying.NowPlayingData
+import com.example.brewapps.data.entities.MoviesList
 import com.example.brewapps.security.API_KEY
 import com.example.brewapps.security.BASE_URL
 import okhttp3.OkHttpClient
@@ -12,10 +12,13 @@ import java.util.concurrent.TimeUnit
 interface Api {
 
     @GET("now_playing?api_key=${API_KEY}")
-    suspend fun getNowPlayingMovieList() : NowPlayingData
+    suspend fun getNowPlayingMovieList(): MoviesList
+
+    @GET("top_rated?api_key=${API_KEY}")
+    suspend fun getTopRatedMovieList(): MoviesList
 
     companion object {
-        operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor) : Api {
+        operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): Api {
             val okHttpClient = OkHttpClient.Builder()
                 .addNetworkInterceptor(networkConnectionInterceptor)
                 .connectTimeout(10, TimeUnit.SECONDS)

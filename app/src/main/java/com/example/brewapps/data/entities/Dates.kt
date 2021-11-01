@@ -1,4 +1,4 @@
-package com.example.brewapps.data.entities.nowPlaying
+package com.example.brewapps.data.entities
 
 data class Dates(
     val maximum: String,

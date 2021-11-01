@@ -14,10 +14,10 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
-        if(!isInternetAvailable())
+        if (!isInternetAvailable())
             throw NoInternetException("Make sure you are connected to internet.")
         try {
-            val response =  chain.proceed(chain.request())
+            val response = chain.proceed(chain.request())
             return response
         } catch (e: Exception) {
             throw SocketTimeoutExceptions("Connection time out.")
