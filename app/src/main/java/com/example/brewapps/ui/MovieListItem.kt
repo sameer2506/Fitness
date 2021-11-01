@@ -8,11 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brewapps.R
 import com.example.brewapps.data.entities.Result
+import com.example.brewapps.data.room.MovieRoom
 import com.example.brewapps.databinding.MovieListItemBinding
 import com.squareup.picasso.Picasso
 
 class MovieListItem(
-    private val arrayList: List<Result>,
+    private val arrayList: List<MovieRoom>,
     private val listener: OnItemClickListener,
     val context: Context
 ) : RecyclerView.Adapter<MovieListItem.MovieListVH>() {
@@ -35,7 +36,7 @@ class MovieListItem(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            list: Result,
+            list: MovieRoom,
             listener: OnItemClickListener
         ) {
             binding.movie = list
@@ -56,6 +57,6 @@ class MovieListItem(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(list: Result)
+        fun onItemClick(list: MovieRoom)
     }
 }

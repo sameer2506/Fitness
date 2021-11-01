@@ -6,7 +6,7 @@
 
         <variable
             name="movie"
-            type="com.example.brewapps.data.entities.Result" />
+            type="com.example.brewapps.data.room.MovieRoom" />
         
         <variable
             name="movieListItemClick"

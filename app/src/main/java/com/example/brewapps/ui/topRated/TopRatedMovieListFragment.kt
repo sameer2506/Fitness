@@ -9,11 +9,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewapps.R
 import com.example.brewapps.data.entities.Result
 import com.example.brewapps.data.network.Resource
+import com.example.brewapps.data.room.MovieRoom
 import com.example.brewapps.databinding.FragmentTopRatedMovieListBinding
 import com.example.brewapps.ui.MovieListItem
 import com.example.brewapps.ui.ViewModelClass
@@ -21,6 +23,7 @@ import com.example.brewapps.ui.ViewModelFactory
 import com.example.brewapps.util.handleApiError
 import com.example.brewapps.util.log
 import com.example.brewapps.util.roundTheNumber
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -37,7 +40,6 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
 
     private lateinit var ctx: Context
     private lateinit var layout: View
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,8 +73,7 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         viewModel.topRatedData.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Success -> {
-                    bindUI(it.value.results)
-                    log(it.value.toString())
+                    saveNowPlayingMovieList(it.value.results)
                 }
                 is Resource.Loading -> {
                 }
@@ -85,7 +86,7 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         binding.swipeRefresh.isRefreshing = false
     }
 
-    private fun bindUI(list: List<Result>) {
+    private fun bindUI(list: List<MovieRoom>) {
         binding.recyclerViewNowPlaying.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
@@ -93,7 +94,14 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         }
     }
 
-    override fun onItemClick(list: Result) {
+    private fun saveNowPlayingMovieList(data: List<MovieRoom>) {
+        lifecycleScope.launch {
+            viewModel.saveNowPlayingMovieList(data)
+        }
+        bindUI(data)
+    }
+
+    override fun onItemClick(list: MovieRoom) {
         val popularity = roundTheNumber(list.popularity)
         val bundle = bundleOf(
             "poster" to list.poster_path,

@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.brewapps.data.network.Api
 import com.example.brewapps.data.network.NetworkConnectionInterceptor
 import com.example.brewapps.data.repositories.Repository
+import com.example.brewapps.data.room.AppDatabase
 import com.example.brewapps.ui.ViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -20,10 +21,11 @@ class Application : Application(), KodeinAware {
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { Api(instance()) }
+        bind() from singleton { AppDatabase(instance()) }
 
         // Repository
 
-        bind() from singleton { Repository(instance()) }
+        bind() from singleton { Repository(instance(), instance()) }
 
         // View Model Factory
 
