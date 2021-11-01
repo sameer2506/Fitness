@@ -14,4 +14,7 @@ interface TopRatedMovieDao {
 
     @Query("SELECT * FROM movieRoom")
     fun getTopRatedMovieList() : List<MovieRoom>
+
+    @Query("SELECT * FROM movieRoom WHERE title LIKE :name ")
+    fun getSearchTopRatedMovList(name: String) : List<MovieRoom>
 }

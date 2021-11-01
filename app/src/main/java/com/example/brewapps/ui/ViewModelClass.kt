@@ -41,10 +41,16 @@ class ViewModelClass(private val repository: Repository) : ViewModel() {
     suspend fun getNowPlayingMovieList() =
         withContext(Dispatchers.IO) { repository.getNowPlayingMovieList() }
 
+    suspend fun getSearchNowPlayMovList(name: String) =
+        withContext(Dispatchers.IO) { repository.getSearchNowPlayMovList(name) }
+
     suspend fun saveTopRatedMovieList(data: List<MovieRoom>) =
         repository.saveTopRatedMovieList(data)
 
     suspend fun getTopRatedMovieList() =
         withContext(Dispatchers.IO) { repository.getTopRatedMovieList() }
+
+    suspend fun getSearchTopRatedMovList(name: String) =
+        withContext(Dispatchers.IO) { repository.getSearchTopRatedMovList(name) }
 
 }

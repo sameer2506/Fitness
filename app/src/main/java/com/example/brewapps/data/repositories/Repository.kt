@@ -25,8 +25,15 @@ class Repository(
 
     fun getNowPlayingMovieList() = db.getNowPlMovList().getNowPlayingMovieList()
 
+    fun getSearchNowPlayMovList(name: String) =
+        db.getNowPlMovList().getSearchNowPlayMovList(name)
+
     suspend fun saveTopRatedMovieList(data: List<MovieRoom>) =
         db.getTopRatedMovList().addTopRatedMovieList(data)
 
     fun getTopRatedMovieList() = db.getTopRatedMovList().getTopRatedMovieList()
+
+    fun getSearchTopRatedMovList(name: String) =
+        db.getTopRatedMovList().getSearchTopRatedMovList(name)
+
 }

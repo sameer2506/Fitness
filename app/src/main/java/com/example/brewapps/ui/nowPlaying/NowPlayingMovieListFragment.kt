@@ -26,6 +26,11 @@ import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+
+
+import com.example.brewapps.MainActivity
 
 
 class NowPlayingMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemClickListener {
@@ -61,6 +66,18 @@ class NowPlayingMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnIte
         binding.swipeRefresh.setOnRefreshListener {
             getMovieList()
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchMovie(query!!)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //    adapter.getFilter().filter(newText);
+                return false
+            }
+        })
     }
 
     private fun getMovieList() {
@@ -97,6 +114,13 @@ class NowPlayingMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnIte
             viewModel.saveNowPlayingMovieList(data)
         }
         bindUI(data)
+    }
+
+    private fun searchMovie(name: String){
+        lifecycleScope.launch {
+            val movieList = viewModel.getSearchNowPlayMovList(name)
+            bindUI(movieList)
+        }
     }
 
     fun getNowPlayingMovieList() {

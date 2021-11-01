@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
@@ -63,6 +64,18 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         binding.swipeRefresh.setOnRefreshListener {
             getMovieList()
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchMovie(query!!)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //    adapter.getFilter().filter(newText);
+                return false
+            }
+        })
     }
 
     private fun getMovieList() {
@@ -73,7 +86,7 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         viewModel.topRatedData.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Success -> {
-                    saveNowPlayingMovieList(it.value.results)
+                    saveTopRatedMovieList(it.value.results)
                 }
                 is Resource.Loading -> {
                 }
@@ -94,11 +107,18 @@ class TopRatedMovieListFragment : Fragment(), KodeinAware, MovieListItem.OnItemC
         }
     }
 
-    private fun saveNowPlayingMovieList(data: List<MovieRoom>) {
+    private fun saveTopRatedMovieList(data: List<MovieRoom>) {
         lifecycleScope.launch {
-            viewModel.saveNowPlayingMovieList(data)
+            viewModel.saveTopRatedMovieList(data)
         }
         bindUI(data)
+    }
+
+    private fun searchMovie(name: String){
+        lifecycleScope.launch {
+            val movieList = viewModel.getSearchTopRatedMovList(name)
+            bindUI(movieList)
+        }
     }
 
     override fun onItemClick(list: MovieRoom) {
